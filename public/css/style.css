@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #171822;
+}
+
+#request-panel {
+    width: 10%;
+    height: 75%;
+    padding: 20px;
+    background-color: #212330;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 5%;
+    border-color: #3EB489;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-right-style:solid ;
+    border-top-style: solid;
+}
+
+.request {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.request:hover {
+    background-color: rgba(240, 240, 240, 0.2);
+}
+
+.request-type-get {
+    color: #569833;
+}
+
+.request-type-post {
+    color: #FFFF00;
+}
+
+.request-type-put {
+    color: #000080;
+}
+
+.request-type-patch {
+    color: #7F00FF;
+}
+
+.request-type-delete {
+    color: #ff0000;
+}
+
+.request-type-head {
+    color: #ffa500;
+}
+
+.request-type-options {
+    color: #A020F0;
+}
