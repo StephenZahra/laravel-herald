@@ -1,28 +1,27 @@
 body {
-    margin: 0;
-    padding: 0;
     background-color: #171822;
+    height: 100vh; /* Full viewport height */
 }
 
+/* CSS for the left side panel showing user requests */
 #request-panel {
-    width: 10%;
-    height: 75%;
-    padding: 20px;
+    height: 91.7vh;
     background-color: #212330;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    margin-top: 5%;
+    margin-top: 4.15%;
     border-color: #3EB489;
+    border-right-color: #C0C0C0;
     border-width: 1px;
     border-bottom-style: solid;
-    border-right-style:solid ;
+    border-right-style: solid ;
     border-top-style: solid;
+    overflow-y: auto;
 }
 
 .request {
     padding-top: 5px;
     padding-bottom: 5px;
+    padding-left: 5px;
     cursor: pointer;
     background-color: transparent;
     transition: background-color 0.3s ease;
@@ -59,4 +58,28 @@ body {
 
 .request-type-options {
     color: #A020F0;
+}
+
+/* CSS for the top right side panel where users make/edit requests */
+#request-making-panel {
+    background-color: #212330;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 5%;
+    border-color: #3EB489;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #C0C0C0;
+    border-right-style:solid;
+    border-top-style: solid;
+}
+
+#response-panel {
+    background-color: #212330;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-color: #3EB489;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-right-style:solid;
+    border-top-style: solid;
+    border-top-color: #C0C0C0;
 }
