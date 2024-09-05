@@ -19,10 +19,27 @@
             </div>
             <div class="column is-flex is-flex-direction-column">
                 <div id="request-making-panel" class="column">
+                    <div class="field is-grouped">
+                        <button class="button is-primary">Send</button>
 
+                        <div class="select">
+                            <select id="request-types">
+                                <option class="request-type-get">GET</option>
+                                <option class="request-type-post">POST</option>
+                                <option class="request-type-put">PUT</option>
+                                <option class="request-type-patch">PATCH</option>
+                                <option class="request-type-delete">DELETE</option>
+                                <option class="request-type-head">HEAD</option>
+                                <option class="request-type-options">OPTIONS</option>
+                            </select>
+                        </div>
+
+                        <input class="input is-normal" type="text" placeholder="https://www.example.com"/>
+                    </div>
                 </div>
-                <div id="response-panel" class="column">
 
+                <div id="response-panel" class="column">
+                    <textarea class=" mt-4 textarea" placeholder="The request result will appear here" rows="15"></textarea>
                 </div>
             </div>
         </div>
