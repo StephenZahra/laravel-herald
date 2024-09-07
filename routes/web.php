@@ -18,4 +18,9 @@ Route::get('/', function () {
     return redirect()->route('herald');
 });
 
-route::get('herald', [HeraldController::class, 'index'])->name('herald');
+Route::controller(HeraldController::class)->group(function () {
+    route::get('herald', [HeraldController::class, 'index'])->name('herald');
+
+    route::post('send', [HeraldController::class, 'send'])->name('send');
+    route::get('send', [HeraldController::class, 'send'])->name('send');
+});
