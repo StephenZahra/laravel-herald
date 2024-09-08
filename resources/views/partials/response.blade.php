@@ -1,8 +1,5 @@
-@if(isset($resp))
-    <textarea class=" mt-4 textarea" rows="15">
-        @dd($resp)
-        {{$resp}}
-    </textarea>
+@if(session('resp') !== null)
+    <textarea readonly class="mt-4 textarea" style="resize: none;" rows="15">{{session('resp')}}</textarea>
 @else
-    <textarea class=" mt-4 textarea" placeholder="The request result will appear here" rows="15"></textarea>
+    <textarea readonly class="mt-4 textarea" style="resize: none;" rows="15"></textarea>
 @endif

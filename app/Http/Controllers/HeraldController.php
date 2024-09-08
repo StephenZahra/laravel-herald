@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\SendRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Http;
 
@@ -26,21 +27,20 @@ class HeraldController extends Controller
     }
 
     /**
-     * This function sends a request to the url sent in the request and sends it back to response view that is being rendered
+     * This function sends a request to the url sent in the request and sends the response to the view that is being rendered
      * in the main page
      *
-     * @param Request $request
+     * @param SendRequest $request
+     * @return RedirectResponse
      */
-    public function send(Request $request) {
-        $data = $request->validate([
-            'type' => 'required|string',
-            'url' => 'required|url'
-        ]);
-        
-        $resp = Http::send($data['type'], $data['url']);
+    public function send(SendRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+
+        $resp = Http::send($data['type'], $data['url'])->body();
 
         session()->flash('data', $data);
 
-        return view('index', ['requests' => $this->requests, 'colours' => $this->cssColourMap, 'types' => $this->types, 'resp' => $resp->collect()->toArray()]);
+        return redirect()->route('herald')->with('resp', $resp);
     }
 }

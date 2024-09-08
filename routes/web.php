@@ -21,6 +21,5 @@ Route::get('/', function () {
 Route::controller(HeraldController::class)->group(function () {
     route::get('herald', [HeraldController::class, 'index'])->name('herald');
 
-    route::post('send', [HeraldController::class, 'send'])->name('send');
-    route::get('send', [HeraldController::class, 'send'])->name('send');
+    route::any('send', [HeraldController::class, 'send'])->name('send');
 });

@@ -27,7 +27,8 @@
                             <div class="select">
                                 <select id="request-types" name="type">
                                     @foreach($types as $type)
-                                        <option {{ session('data.type') == $type ? 'selected' : ''}} class="request-type-{{strtolower($type)}}">{{$type}}</option>
+                                        <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ? 'selected' : ''}}
+                                        class="request-type-{{strtolower($type)}}">{{$type}}</option>
                                     @endforeach
                                 </select>
                             </div>
