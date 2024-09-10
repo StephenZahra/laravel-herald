@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HeraldController;
+use App\Livewire\HeraldPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,10 @@ Route::get('/', function () {
     return redirect()->route('herald');
 });
 
-Route::controller(HeraldController::class)->group(function () {
-    route::get('herald', [HeraldController::class, 'index'])->name('herald');
+route::get('herald', HeraldPage::class)->name('herald');
 
-    route::any('send', [HeraldController::class, 'send'])->name('send');
-});
+//Route::controller(HeraldController::class)->group(function () {
+//
+//
+//    route::any('send', [HeraldController::class, 'send'])->name('send');
+//});

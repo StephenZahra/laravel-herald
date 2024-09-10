@@ -9,21 +9,15 @@ use Illuminate\Support\Facades\Http;
 
 class HeraldController extends Controller
 {
-
-    private array $requests = [['name' => 'test', 'type' => 'GET'], ['name' => 'test again', 'type' => 'DELETE']];
-    private array $cssColourMap = ['GET' => 'request-type-get', 'POST' => 'request-type-post', 'PUT' => 'request-type-put',
-                         'PATCH' => 'request-type-patch', 'DELETE' => 'request-type-delete', 'HEAD' => 'request-type-head',
-                         'OPTIONS' => 'request-type-options'];
-    private array $types = ['GET' => 'GET', 'POST' => 'POST', 'PATCH' => 'PATCH', 'PUT' => 'PUT', 'DELETE' => 'DELETE', 'HEAD' => 'HEAD', 'OPTIONS' => 'OPTIONS'];
-
     /**
-     * This function sets up the herald page on load, providing the requests saved by the user and the css classes associated with
-     * the request types to colour them accordingly
+     * Render the Livewire component directly.
+     *
+     * This method is simplified since the data loading and UI updates are now handled by the Livewire component.
      */
-    public function index() {
-        $resp = null;
-
-        return view('index', ['requests' => $this->requests, 'colours' => $this->cssColourMap, 'types' => $this->types, 'resp' => $resp]);
+    public function index()
+    {
+        // No need to load data here; the Livewire component handles it.
+        return view('herald'); // A simple view that includes the parent Livewire component.
     }
 
     /**
