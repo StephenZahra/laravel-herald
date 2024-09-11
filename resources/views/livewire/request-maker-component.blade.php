@@ -1,19 +1,19 @@
 <div>
-    <form method="post">
+    <form wire:submit.prevent="sendRequest">
         @csrf
         <div class="field is-grouped">
-            <button class="button is-primary">Send</button>
+            <button class="button is-primary" type="submit">Send</button>
 
             <div class="select">
-                <select id="request-types" name="type">
+                <select wire:model="type" name="type" id="request-types">
                     @foreach($types as $type)
-                    <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ?'selected' : ''}}
-                    class="request-type-{{strtolower($type)}}">{{$type}}</option>
+                        <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ?'selected' : ''}}
+                        class="request-type-{{strtolower($type)}}">{{$type}}</option>
                     @endforeach
                 </select>
             </div>
 
-            <input name="url" class="input is-normal" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('name')}}"/>
+            <input wire:model="url" name="url" class="input is-normal" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('name')}}"/>
         </div>
     </form>
 </div>

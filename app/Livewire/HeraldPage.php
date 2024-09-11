@@ -8,7 +8,7 @@ class HeraldPage extends Component
 {
     public array $requests;
     public array $colours;
-    public array $resp;
+    public string $response;
 
     public function mount()
     {
@@ -16,7 +16,7 @@ class HeraldPage extends Component
         $this->colours = ['GET' => 'request-type-get', 'POST' => 'request-type-post', 'PUT' => 'request-type-put',
                          'PATCH' => 'request-type-patch', 'DELETE' => 'request-type-delete', 'HEAD' => 'request-type-head',
                          'OPTIONS' => 'request-type-options'];
-        //$this->resp = null; // Initialize response or fetch it if needed
+        $this->response = '';
     }
 
     public function render()

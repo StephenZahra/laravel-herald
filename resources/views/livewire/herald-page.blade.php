@@ -16,7 +16,7 @@
             </div>
             @if(!empty($requests))
                 @foreach($requests as $request)
-                    @livewire('request-list-component', ['request' => $request, 'colours' => $colours])
+                    <livewire:request-list-component :request="$request" :colours="$colours"/>
                 @endforeach
             @else
                 <p>You have no requests</p>
@@ -24,11 +24,11 @@
         </div>
         <div class="column is-flex is-flex-direction-column">
             <div id="request-making-panel" class="column">
-                @livewire('request-maker-component')
+                <livewire:request-maker-component />
             </div>
 
             <div id="response-panel" class="column">
-                @include('partials.response', ['resp' => $resp])
+                <livewire:request-response-component listen="response-received:handleResponse" />
             </div>
         </div>
     </div>
