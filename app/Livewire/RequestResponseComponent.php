@@ -15,7 +15,7 @@ class RequestResponseComponent extends Component
     }
 
     #[On('response-received')]
-    public function updateResponse($responseBody){
-        $this->response = $responseBody;
+    public function updateResponse($response){
+        $this->response = $response;
     }
 }

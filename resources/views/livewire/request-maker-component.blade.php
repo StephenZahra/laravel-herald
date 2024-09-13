@@ -1,19 +1,28 @@
 <div>
     <form wire:submit.prevent="sendRequest">
         @csrf
-        <div class="field is-grouped">
+        <div class="field is-grouped is-align-items-start">
             <button class="button is-primary" type="submit">Send</button>
 
-            <div class="select">
-                <select wire:model="type" name="type" id="request-types">
-                    @foreach($types as $type)
-                        <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ?'selected' : ''}}
-                        class="request-type-{{strtolower($type)}}">{{$type}}</option>
-                    @endforeach
-                </select>
+             <div class="control">
+                <div class="select">
+                    <select name="type" wire:model="type" id="request-types">
+                        @foreach($types as $type)
+                            <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ? 'selected' : ''}}
+                            class="request-type-{{strtolower($type)}}">
+                                {{ $type }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
-            <input wire:model="url" name="url" class="input is-normal" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('name')}}"/>
+            <div class="control is-flex is-flex-direction-column is-expanded">
+                <input name="url" wire:model="url" class="input @error('url') is-danger @enderror" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('url')}}"/>
+                @error('url')
+                    <p class="help is-danger" style="margin-top: 0.25rem;">{{ $message }}</p> <!-- Error message directly below input -->
+                @enderror
+            </div>
         </div>
     </form>
 </div>
