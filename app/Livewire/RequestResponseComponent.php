@@ -8,6 +8,7 @@ use Livewire\Component;
 class RequestResponseComponent extends Component
 {
     public string $response;
+    public int $status;
 
     public function render()
     {
@@ -15,7 +16,8 @@ class RequestResponseComponent extends Component
     }
 
     #[On('response-received')]
-    public function updateResponse($response){
+    public function updateResponse($response, $status){
         $this->response = $response;
+        $this->status = $status;
     }
 }

@@ -7,8 +7,8 @@ use Livewire\Component;
 
 class RequestMakerComponent extends Component
 {
-    public $type;
-    public $url;
+    public string $type;
+    public string $url;
 
     public function render()
     {
@@ -28,12 +28,7 @@ class RequestMakerComponent extends Component
 
         $resp = Http::send($this->type, $this->url);
 
-        //success...save and dispatch the event to update the response on frontend
-        if($resp->successful()){
-            $this->dispatch('response-received', response: $resp->body());
-        }
-        else{
-            //TODO
-        }
+        //save and dispatch the event to update the response on frontend
+        $this->dispatch('response-received', response: $resp->body(), status: $resp->status());
     }
 }

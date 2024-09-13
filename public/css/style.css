@@ -33,31 +33,31 @@ body {
 }
 
 .request-type-get {
-    color: #569833;
+    color: #34C759;
 }
 
 .request-type-post {
-    color: #FFFF00;
+    color: #FF9500;
 }
 
 .request-type-put {
-    color: #000080;
+    color: #FFCC00;
 }
 
 .request-type-patch {
-    color: #7F00FF;
+    color: #5856D6;
 }
 
 .request-type-delete {
-    color: #ff0000;
+    color: #FF3B30;
 }
 
 .request-type-head {
-    color: #ffa500;
+    color: #AF52DE;
 }
 
 .request-type-options {
-    color: #A020F0;
+    color: #5AC8FA;
 }
 
 /* CSS for the top right side panel where users make/edit requests */

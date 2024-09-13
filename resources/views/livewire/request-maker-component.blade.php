@@ -20,7 +20,7 @@
             <div class="control is-flex is-flex-direction-column is-expanded">
                 <input name="url" wire:model="url" class="input @error('url') is-danger @enderror" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('url')}}"/>
                 @error('url')
-                    <p class="help is-danger" style="margin-top: 0.25rem;">{{ $message }}</p> <!-- Error message directly below input -->
+                    <p class="help is-danger">{{ $message }}</p>
                 @enderror
             </div>
         </div>
