@@ -12,7 +12,8 @@ class RequestMakerComponent extends Component
 
     public function render()
     {
-        $this->type = 'GET'; // if the dropdown does not change from the first set item, then livewire will not be able to retreive
+        $this->type = session('type', 'GET'); /* set a default value to provide livewire a default value,
+                                                              also storing in session to keep the current chosen request type when requsts are done */
 
         return view('livewire.request-maker-component')->with([
             'types' => ['GET' => 'GET', 'POST' => 'POST', 'PATCH' => 'PATCH', 'PUT' => 'PUT', 'DELETE' => 'DELETE', 'HEAD' => 'HEAD', 'OPTIONS' => 'OPTIONS']
@@ -27,6 +28,8 @@ class RequestMakerComponent extends Component
         ]);
 
         $resp = Http::send($this->type, $this->url);
+
+        session()->put('type', $this->type);
 
         //save and dispatch the event to update the response on frontend
         $this->dispatch('response-received', response: $resp->body(), status: $resp->status());

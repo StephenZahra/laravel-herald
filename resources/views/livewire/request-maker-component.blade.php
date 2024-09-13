@@ -8,9 +8,8 @@
                 <div class="select">
                     <select name="type" wire:model="type" id="request-types">
                         @foreach($types as $type)
-                            <option {{(session('data.type') == $type ? 'selected' : '') || old('type') !== null && old('type') == $type ? 'selected' : ''}}
-                            class="request-type-{{strtolower($type)}}">
-                                {{ $type }}
+                            <option {{(session('type') == $type ? 'selected' : '')}} class="request-type-{{strtolower($type)}}">
+                                {{$type}}
                             </option>
                         @endforeach
                     </select>
