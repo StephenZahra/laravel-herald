@@ -20,6 +20,11 @@ class RequestMakerComponent extends Component
         ]);
     }
 
+    /**
+     * This function handles sending a request to the designated endpoint. It also dispatches an event so that the response can be sent to the frontend to update
+     * the page in realtime
+     * @return void
+     */
     public function sendRequest(): void
     {
         $this->validate([

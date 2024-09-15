@@ -6,8 +6,8 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu3" role="menu">
         <div id="new-items" class="dropdown-content">
-            <a href="#" class="dropdown-item">Request</a>
-            <a href="#" class="dropdown-item">Folder</a>
+            <a wire:click="create('folder')" class="dropdown-item">Folder</a>
+            <a wire:click="create('request')" class="dropdown-item">Request</a>
         </div>
     </div>
 </div>
