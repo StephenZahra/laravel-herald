@@ -19,9 +19,3 @@ Route::get('/', function () {
 });
 
 route::get('herald', HeraldPage::class)->name('herald');
-
-//Route::controller(HeraldController::class)->group(function () {
-//
-//
-//    route::any('send', [HeraldController::class, 'send'])->name('send');
-//});

@@ -24,7 +24,7 @@ class Request extends Model
      * @param string $url The endpoint the request is sent to
      * @return Request
      */
-    public static function create(string $name, string $type = '', string $url = ''): Request
+    public static function create(string $name, string $type = 'GET', string $url = ''): Request
     {
         return new self($name, $type, $url);
     }

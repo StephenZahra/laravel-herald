@@ -16,11 +16,11 @@ class RequestListComponent extends Component
     public function __construct()
     {
         $this->jsonService = new JsonOperationService();
+        $this->requests = $this->jsonService->getAll();
     }
 
-    public function mount(array $requests, array $colours, JsonOperationService $jsonService)
+    public function mount(array $colours, JsonOperationService $jsonService)
     {
-        $this->requests = $requests;
         $this->colours = $colours;
         $this->jsonService = $jsonService;
     }
@@ -39,12 +39,14 @@ class RequestListComponent extends Component
     {
         $item = null;
         if($type == "folder"){
-            $item = Folder::create("new folder", []);
+            $item = Folder::create("new folder", 'folder', []);
         }
         else{
-            $item = Request::create('new request', '', '');
+            $item = Request::create('new request', 'GET', '');
         }
 
         $this->jsonService->save($item);
+
+        $this->requests = $this->jsonService->getAll();
     }
 }

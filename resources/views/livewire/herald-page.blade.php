@@ -1,7 +1,7 @@
 <div>
     <div class="columns is-gapless">
         <div id="request-panel" class="column is-2">
-            <livewire:request-list-component :requests="$requests" :colours="$colours"/>
+            <livewire:request-list-component :colours="$colours"/>
         </div>
 
         <div class="column is-flex is-flex-direction-column">
