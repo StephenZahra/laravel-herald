@@ -6,11 +6,11 @@ use Livewire\Component;
 
 class RequestListComponent extends Component
 {
-    public array $request;
+    public array $requests;
     public array $colours;
 
-    public function mount($request, $colours){
-        $this->request = $request;
+    public function mount($requests, $colours){
+        $this->requests = $requests;
         $this->colours = $colours;
     }
 
