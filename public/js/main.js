@@ -14,8 +14,24 @@ ddBtnNew.addEventListener("click", function (event){
     }
 });
 
-document.addEventListener("click", function (event){
-    if (!ddBtnNew.contains(event.target) || newItems.contains(event.target)) {
-        ddBtnNew.classList.remove("is-active");
+document.addEventListener('click', function(event) {
+    // Check if the click is on a dropdown trigger
+    let dropdownId = event.target.closest('.dropdown-trigger');
+    let dropdownElem = event.target.closest('.dropdown-options');
+    if (dropdownId && dropdownElem){
+       // Toggle visibility of the dropdown
+       if(!dropdownElem.classList.contains("is-active")){
+           dropdownElem.classList.add("is-active");
+       }
+       else{
+           dropdownElem.classList.remove("is-active");
+       }
+
+       event.stopPropagation();
+    } else {
+        // Hide any visible dropdowns if click is outside
+        document.querySelectorAll('.dropdown-options.is-active').forEach(function(dropdown) {
+            dropdown.classList.remove('is-active');
+        });
     }
 });

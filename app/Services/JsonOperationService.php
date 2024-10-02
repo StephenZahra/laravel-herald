@@ -24,6 +24,10 @@ class JsonOperationService
         return Storage::fileExists($this->filePath);
     }
 
+    /**
+     * This function returns all the data stored in the json file as an array
+     * @return array
+     */
     public function getAll(): array
     {
         //get the currently stored folders/requests
@@ -32,7 +36,7 @@ class JsonOperationService
     }
 
     /**
-     * This function handles saving a Request or Response object to the requests.json file
+     * This function handles saving a Folder or Request object to the requests.json file
      * @param Folder|Request $item The Folder or Request object we must save
      * @return void
      */
@@ -43,7 +47,7 @@ class JsonOperationService
         }
 
         //get the currently stored folders/requests
-        $existingJson = json_decode(Storage::get($this->filePath));
+        $existingJson = $this->getAll();
 
         //append the new object to the decoded current json
         $existingJson[] = $item;

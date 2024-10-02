@@ -31,7 +31,7 @@ class RequestListComponent extends Component
     }
 
     /**
-     * This function creates a default folder or request object and saves it to the
+     * This function creates a default folder or request object and saves it to the json file
      * @param string $type The type of object we will create
      * @return void
      */
@@ -39,10 +39,10 @@ class RequestListComponent extends Component
     {
         $item = null;
         if($type == "folder"){
-            $item = Folder::create("new folder", 'folder', []);
+            $item = Folder::create(uniqid('folder_'), "new folder", 'folder', []);
         }
         else{
-            $item = Request::create('new request', 'GET', '');
+            $item = Request::create(uniqid('request_'), 'new request', 'GET', '');
         }
 
         $this->jsonService->save($item);

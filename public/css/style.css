@@ -69,7 +69,7 @@ body {
     border-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #C0C0C0;
-    border-right-style:solid;
+    border-right-style: solid;
     border-top-style: solid;
 }
 
@@ -79,7 +79,21 @@ body {
     border-color: #3EB489;
     border-width: 1px;
     border-bottom-style: solid;
-    border-right-style:solid;
+    border-right-style: solid;
     border-top-style: solid;
     border-top-color: #C0C0C0;
+}
+
+/* CSS related to request content */
+.init-hide {
+    opacity: 0;
+}
+
+.gear-elem {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.request:hover .init-hide {
+    opacity: 1;
 }
