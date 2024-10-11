@@ -16,26 +16,7 @@
     @if(!empty($requests))
         @foreach($requests as $request)
             @if($request->type == 'folder')
-                <div class="request">
-                    <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
-                        <span style="color: #ffffff; font-family: math;">
-                            {{$request->name}}
-                        </span>
-
-                        <div class="dropdown is-right mr-1 init-hide dropdown-options" dropdown-id="{{$request->id}}">
-                            <div class="dropdown-trigger">
-                                <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                    <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                                <div id="item-options" class="dropdown-content">
-                                    <a class="dropdown-item">Move to Folder</a>
-                                </div>
-                            </div>
-                        </div>
-                    </span>
-                </div>
+                <livewire:request-component :request="$request"/>
             @else
                 <div class="request">
                     <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
@@ -46,12 +27,12 @@
 
                             <div class="dropdown is-right mr-1 init-hide dropdown-options" dropdown-id="{{$request->id}}">
                                 <div class="dropdown-trigger">
-                                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu3">
+                                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu4">
                                         <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
                                     </button>
                                 </div>
-                                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                                    <div id="item-options" class="dropdown-content">
+                                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                                    <div class="dropdown-content">
                                         <a class="dropdown-item">Move to Folder</a>
                                     </div>
                                 </div>

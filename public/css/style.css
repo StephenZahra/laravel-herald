@@ -28,8 +28,24 @@ body {
     width: 100%;
 }
 
-.request:hover {
+/* generic request hover effect */
+.request:hover:not(.nested-items) {
     background-color: rgba(240, 240, 240, 0.2);
+}
+
+/* When the folder element is clicked, apply the active state */
+.request.folder.clicked {
+    background-color: rgba(240, 240, 240, 0.4);
+}
+
+/* Hover effect for folder child items */
+.nested-items .request-item:hover {
+    background-color: rgba(240, 240, 240, 0.2);
+}
+
+/* Exclude .nested-items from inheriting the background-color */
+.nested-items {
+    background-color: transparent;
 }
 
 .request-type-get {
@@ -85,6 +101,10 @@ body {
 }
 
 /* CSS related to request content */
+.is-hidden {
+    display: none;
+}
+
 .init-hide {
     opacity: 0;
 }

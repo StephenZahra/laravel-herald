@@ -19,7 +19,7 @@
             <div class="control is-flex is-flex-direction-column is-expanded">
                 <input name="url" wire:model="url" class="input @error('url') is-danger @enderror" type="text" placeholder="https://www.example.com" value="{{session('data.url') ?? old('url')}}"/>
                 @error('url')
-                    <p class="help is-danger">{{ $message }}</p>
+                    <p class="help is-danger">{{$message}}</p>
                 @enderror
             </div>
         </div>

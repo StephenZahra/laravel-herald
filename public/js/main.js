@@ -30,8 +30,22 @@ document.addEventListener('click', function(event) {
        event.stopPropagation();
     } else {
         // Hide any visible dropdowns if click is outside
-        document.querySelectorAll('.dropdown-options.is-active').forEach(function(dropdown) {
-            dropdown.classList.remove('is-active');
-        });
+        //document.querySelectorAll('.dropdown-options.is-active').forEach(function(dropdown) {
+            //dropdown.classList.remove('is-active');
+        //});
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.folder-toggle').forEach(function(folder) {
+        folder.addEventListener('click', function() {
+            const parentRequest = folder.closest('.request');
+            const nestedItems = document.querySelector('.nested-items[parent-id="' + parentRequest.getAttribute('folder-id') + '"]');
+            console.log(parentRequest);
+            console.log(nestedItems);
+            console.log(parentRequest.getAttribute('folder-id'));
+            parentRequest.classList.toggle('clicked');
+            nestedItems.classList.toggle('is-hidden');
+        });
+    });
 });
