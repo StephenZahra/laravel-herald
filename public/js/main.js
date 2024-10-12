@@ -20,43 +20,42 @@ document.addEventListener('click', function(event) {
     // Check if the click is on a dropdown trigger
     let dropdownId = event.target.closest('.dropdown-trigger');
     let dropdownElem = event.target.closest('.dropdown-options');
-    if (dropdownId && dropdownElem){
-       // Toggle visibility of the dropdown (folder)
-       if(!dropdownElem.classList.contains("is-active")){
-           dropdownElem.classList.add("is-active");
-       }
-       else{
-           dropdownElem.classList.remove("is-active");
-       }
 
-       event.stopPropagation();
+    if (dropdownId && dropdownElem) {
+       // Toggle visibility of the dropdown (folder)
+       dropdownElem.classList.toggle("is-active");
     }
+
+    event.stopPropagation();
 });
 
 // this toggles visibility of nested folder items and controls which element have the 'clicked' CSS class
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.folder, .request').forEach(function(folder) {
-        folder.addEventListener('click', function(event) {
+    document.querySelectorAll('.folder, .request').forEach(function(elem) {
+        elem.addEventListener('click', function(event) {
+            // the click was on the gear icon, stop here to avoid overriding the options gear funcionality
+            if (event.target.closest('.dropdown-trigger')) {
+                return;
+            }
 
-            const parentRequest = folder.closest('.request');
+            const parentRequest = elem.closest('.folder, .request');
             const nestedItems = document.querySelector('.nested-items[parent-id="' + parentRequest.getAttribute('folder-id') + '"]');
 
             // Remove 'clicked' class from all other folders
-            document.querySelectorAll('.request').forEach(function (req) {
-                if (req !== parentRequest) {
+            document.querySelectorAll('.request.clicked').forEach(function (req) {
+               if (req !== parentRequest) {
                     req.classList.remove('clicked');
-                }
+               }
             });
 
-            // Toggle the 'clicked' class for the current folder
+            // toggle the 'clicked' class for the current folder
             parentRequest.classList.toggle('clicked');
 
-            // Toggle visibility of nested items
+            // toggle visibility of nested items
             if (nestedItems != null) {
                 nestedItems.classList.toggle('is-hidden');
             }
 
-            // Prevent the event from bubbling to nested items
             event.stopPropagation();
         });
     });

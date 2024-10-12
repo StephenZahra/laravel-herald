@@ -114,15 +114,20 @@ body {
 }
 
 /* Gear icon should only appear for the element being hovered */
-.dropdown-options {
-    display: none; /* Hide by default */
+.request-hover .dropdown-options .request.clicked .dropdown-options {
+    display: block;
+}
+
+/* Ensure that nested-items don't inherit the hover or clicked state from their parent */
+.nested-items .dropdown-options {
+    display: none;
+}
+
+/* Control the hover state of the nested items independently */
+.nested-items .request:hover .dropdown-options {
+    display: block;
 }
 
 .clicked {
     background-color: rgba(120, 120, 120, 0.4); /* Stay highlighted */
 }
-
-/* Remove hover effect from nested items automatically */
-/*.nested-items {*/
-/*    background-color: transparent; !* No background by default *!*/
-/*}*/

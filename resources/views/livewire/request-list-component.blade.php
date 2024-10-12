@@ -16,30 +16,9 @@
     @if(!empty($requests))
         @foreach($requests as $request)
             @if($request->type == 'folder')
-                <livewire:request-component :request="$request"/>
+                <livewire:folder-component :folder="$request" :colours="$colours"/>
             @else
-                <div class="request">
-                    <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
-                        <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request->type]}}">{{$request->type}}</strong></span>
-
-                        <span style="display: flex; justify-content: space-between; flex-grow: 1; align-items: center;">
-                            <span style="color: #ffffff; font-family: math;">{{$request->name}}</span>
-
-                            <div class="dropdown is-right mr-1 init-hide dropdown-options" dropdown-id="{{$request->id}}">
-                                <div class="dropdown-trigger">
-                                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu4">
-                                        <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
-                                    </button>
-                                </div>
-                                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                                    <div class="dropdown-content">
-                                        <a class="dropdown-item">Move to Folder</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
-                    </span>
-                </div>
+                <livewire:request-component :request="$request" :colours="$colours"/>
             @endif
         @endforeach
     @endif
