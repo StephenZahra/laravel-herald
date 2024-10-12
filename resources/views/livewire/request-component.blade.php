@@ -18,7 +18,7 @@
         </div>
     </span>
 
-    @if(isset($request->requests) && !empty($request->requests))
+    @if(optional($request)->requests)
         <div class="nested-items is-hidden" parent-id="{{$request->id}}">
             @foreach($request->requests as $item)
                 @if($item->type == 'folder')

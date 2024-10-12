@@ -33,14 +33,9 @@ body {
     background-color: rgba(240, 240, 240, 0.2);
 }
 
-/* When the folder element is clicked, apply the active state */
-.request.folder.clicked {
-    background-color: rgba(240, 240, 240, 0.4);
-}
-
-/* Hover effect for folder child items */
-.nested-items .request-item:hover {
-    background-color: rgba(240, 240, 240, 0.2);
+/* General hover effect for the .request folder (parent)*/
+.request:hover {
+    background-color: rgba(240, 240, 240, 0.2); /* Only applies to folder */
 }
 
 /* Exclude .nested-items from inheriting the background-color */
@@ -117,3 +112,17 @@ body {
 .request:hover .init-hide {
     opacity: 1;
 }
+
+/* Gear icon should only appear for the element being hovered */
+.dropdown-options {
+    display: none; /* Hide by default */
+}
+
+.clicked {
+    background-color: rgba(120, 120, 120, 0.4); /* Stay highlighted */
+}
+
+/* Remove hover effect from nested items automatically */
+/*.nested-items {*/
+/*    background-color: transparent; !* No background by default *!*/
+/*}*/
