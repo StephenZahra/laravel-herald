@@ -106,10 +106,7 @@ body {
 }
 
 /* make the dropdown appear for folder and request elements using the div with toggle class*/
-.folder-toggle:hover .dropdown {
-    display: block;
-}
-
+.folder-toggle:hover .dropdown,
 .request-toggle:hover .dropdown {
     display: block;
 }
