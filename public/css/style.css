@@ -100,32 +100,23 @@ body {
     display: none;
 }
 
-.init-hide {
-    opacity: 0;
+/* hide the dropdown by default */
+.dropdown {
+    display: none;
 }
 
-.gear-elem {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* make the dropdown appear for folder and request elements using the div with toggle class*/
+.folder-toggle:hover .dropdown {
+    display: block;
 }
 
-.request:hover .init-hide {
-    opacity: 1;
-}
-
-/* Gear icon should only appear for the element being hovered */
-.request-hover .dropdown-options .request.clicked .dropdown-options {
+.request-toggle:hover .dropdown {
     display: block;
 }
 
 /* Ensure that nested-items don't inherit the hover or clicked state from their parent */
 .nested-items .dropdown-options {
     display: none;
-}
-
-/* Control the hover state of the nested items independently */
-.nested-items .request:hover .dropdown-options {
-    display: block;
 }
 
 .clicked {

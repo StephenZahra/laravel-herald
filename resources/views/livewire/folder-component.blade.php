@@ -1,23 +1,24 @@
 <div class="request folder" folder-id="{{$folder->id}}">
-    <span class="folder-toggle icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: #ffffff; font-family: math;">
-            {{$folder->name}}
-        </span>
+    <div class="folder-toggle">
+        <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: #ffffff; font-family: math;">
+                {{$folder->name}}
+            </span>
 
-        <div class="dropdown is-right mr-1 init-hide dropdown-options" dropdown-id="{{$folder->id}}">
-            <div class="dropdown-trigger">
-                <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
-                    <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
-                </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-                <div class="dropdown-content">
-                    <a class="dropdown-item">Move to Folder</a>
+            <div class="dropdown is-right mr-1 dropdown-options" dropdown-id="{{$folder->id}}">
+                <div class="dropdown-trigger">
+                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
+                        <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                    <div class="dropdown-content">
+                        <a class="dropdown-item">Move to Folder</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </span>
-
+        </span>
+    </div>
     @if(optional($folder)->requests)
         <div class="nested-items is-hidden" parent-id="{{$folder->id}}">
             @foreach($folder->requests as $request)
