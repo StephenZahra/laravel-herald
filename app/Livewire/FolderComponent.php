@@ -13,4 +13,9 @@ class FolderComponent extends Component
     {
         return view('livewire.folder-component');
     }
+
+    public function test2()
+    {
+
+    }
 }

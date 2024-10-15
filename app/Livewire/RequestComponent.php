@@ -13,4 +13,14 @@ class RequestComponent extends Component
     {
         return view('livewire.request-component');
     }
+
+    public function test3()
+    {
+
+    }
+
+    public function test4()
+    {
+
+    }
 }

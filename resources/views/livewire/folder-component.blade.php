@@ -1,7 +1,7 @@
-<div class="request folder" folder-id="{{$folder->id}}">
+<div wire:sortable-item="updateFolder" wire:sortable-group="{{$parent->id ?? $folder->id}}" wire:sortable-group.item="{{$folder->id}}" class="request folder" folder-id="{{$folder->id}}">
     <div class="folder-toggle">
         <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: #ffffff; font-family: math;">
+            <span wire:sortable.handle style="color: #ffffff; font-family: math;">
                 {{$folder->name}}
             </span>
 
@@ -23,9 +23,9 @@
         <div class="nested-items is-hidden" parent-id="{{$folder->id}}">
             @foreach($folder->requests as $request)
                 @if($request->type == 'folder')
-                    <livewire:folder-component :folder="$request" :colours="$colours"/>
+                    <livewire:folder-component :parent="$folder" :folder="$request" :colours="$colours"/>
                 @else
-                    <livewire:request-component :request="$request" :colours="$colours"/>
+                    <livewire:request-component :parent="$folder" :request="$request" :colours="$colours"/>
                 @endif
             @endforeach
         </div>

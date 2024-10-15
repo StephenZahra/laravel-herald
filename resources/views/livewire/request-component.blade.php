@@ -1,4 +1,4 @@
-<div class="request">
+<div wire:sortable.item="{{$request->id}}" wire:sortable.group="{{$parent->id ?? $request->id}}" wire:sortable.group.item="{{$request->id}}" wire:sortable.handle class="request">
     <div class="request-toggle">
         <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
             <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request->type]}}">{{$request->type}}</strong></span>

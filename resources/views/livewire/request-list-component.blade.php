@@ -1,5 +1,5 @@
-<div>
-    <div id="dropdown-btn-new" class="dropdown mt-1 ml-1">
+<div wire:sortable="test">
+    <div id="dropdown-btn-new" class="dropdown mt-1 ml-1" style="display: block !important; width: fit-content;">
         <div class="dropdown-trigger">
             <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu1">
                 <span>New</span>

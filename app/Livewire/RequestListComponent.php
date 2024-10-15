@@ -49,4 +49,9 @@ class RequestListComponent extends Component
 
         $this->requests = $this->jsonService->getAll();
     }
+
+    public function test()
+    {
+        
+    }
 }
