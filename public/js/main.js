@@ -60,3 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    let reqs = document.getElementById('sortableElem');
+    if (reqs && window.sortable) {
+        window.sortable.create(reqs, {
+            animation: 150
+        });
+    }
+});

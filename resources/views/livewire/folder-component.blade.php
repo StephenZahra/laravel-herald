@@ -1,7 +1,7 @@
-<div wire:sortable-item="updateFolder" wire:sortable-group="{{$parent->id ?? $folder->id}}" wire:sortable-group.item="{{$folder->id}}" class="request folder" folder-id="{{$folder->id}}">
+<div class="request folder" folder-id="{{$folder->id}}">
     <div class="folder-toggle">
         <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
-            <span wire:sortable.handle style="color: #ffffff; font-family: math;">
+            <span style="color: #ffffff; font-family: math;">
                 {{$folder->name}}
             </span>
 

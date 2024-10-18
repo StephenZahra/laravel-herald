@@ -1,4 +1,4 @@
-<div wire:sortable="test">
+<div>
     <div id="dropdown-btn-new" class="dropdown mt-1 ml-1" style="display: block !important; width: fit-content;">
         <div class="dropdown-trigger">
             <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu1">
@@ -13,13 +13,15 @@
         </div>
     </div>
 
-    @if(!empty($requests))
-        @foreach($requests as $request)
-            @if($request->type == 'folder')
-                <livewire:folder-component :folder="$request" :colours="$colours"/>
-            @else
-                <livewire:request-component :request="$request" :colours="$colours"/>
-            @endif
-        @endforeach
-    @endif
+    <div id="sortableElem">
+        @if(!empty($requests))
+            @foreach($requests as $request)
+                @if($request->type == 'folder')
+                    <livewire:folder-component :folder="$request" :colours="$colours"/>
+                @else
+                    <livewire:request-component :request="$request" :colours="$colours"/>
+                @endif
+            @endforeach
+        @endif
+    </div>
 </div>

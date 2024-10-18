@@ -1,2 +1,4 @@
 import './bootstrap';
-import 'livewire-sortable';
+import Sortable from 'sortablejs';
+
+window.sortable = Sortable;
