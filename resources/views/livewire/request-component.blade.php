@@ -1,4 +1,4 @@
-<div class="request">
+<div wire:key="{{$request->id}}" data-id="{{$request->id}}" class="request request-item request-container item-content">
     <div class="request-toggle">
         <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
             <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request->type]}}">{{$request->type}}</strong></span>

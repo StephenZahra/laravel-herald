@@ -13,21 +13,21 @@ class RequestListComponent extends Component
     public array $requests;
     public array $colours;
 
-    public function __construct()
-    {
-        $this->jsonService = new JsonOperationService();
-        $this->requests = $this->jsonService->getAll();
-    }
-
     public function mount(array $colours, JsonOperationService $jsonService)
     {
         $this->colours = $colours;
         $this->jsonService = $jsonService;
+        $this->requests = $jsonService->getAll();
     }
 
     public function render()
     {
-        return view('livewire.request-list-component');
+        return view('livewire.request-list-component', ['requests' => $this->requests]);
+    }
+
+    public function rendering(JsonOperationService $jsonService)
+    {
+        $this->requests = $jsonService->getAll(); // Fetch updated requests
     }
 
     /**
@@ -50,8 +50,10 @@ class RequestListComponent extends Component
         $this->requests = $this->jsonService->getAll();
     }
 
-    public function test()
+    public function updateOrder($newOrder)
     {
-        
+        dd("man im dead");
+//        // Update $items array based on $newOrder (which contains an array of item IDs in new order)
+//        $this->requests = collect($newOrder)->map(fn ($id) => collect($this->requests)->firstWhere('id', $id))->toArray();
     }
 }

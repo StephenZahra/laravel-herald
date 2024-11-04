@@ -31,18 +31,18 @@ document.addEventListener('click', function(event) {
 
 // this toggles visibility of nested folder items and controls which element have the 'clicked' CSS class
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.folder, .request').forEach(function(elem) {
+    document.querySelectorAll('.request-item').forEach(function(elem) {
         elem.addEventListener('click', function(event) {
             // the click was on the gear icon, stop here to avoid overriding the options gear funcionality
             if (event.target.closest('.dropdown-trigger')) {
                 return;
             }
 
-            const parentRequest = elem.closest('.folder, .request');
-            const nestedItems = document.querySelector('.nested-items[parent-id="' + parentRequest.getAttribute('folder-id') + '"]');
+            const parentRequest = elem.closest('.request-item');
+            const nestedItems = document.querySelector('.nested-items[parent-id="' + parentRequest.getAttribute('data-id') + '"]');
 
             // Remove 'clicked' class from all other folders
-            document.querySelectorAll('.request.clicked').forEach(function (req) {
+            document.querySelectorAll('.request-item.clicked').forEach(function (req) {
                if (req !== parentRequest) {
                     req.classList.remove('clicked');
                }
@@ -61,11 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    let reqs = document.getElementById('sortableElem');
-    if (reqs && window.sortable) {
-        window.sortable.create(reqs, {
-            animation: 150
-        });
-    }
-});
+document.addEventListener('DOMContentLoaded', function(){
+    let grid = new window.Muuri('.grid', {
+        dragEnabled: true
+    });
+})

@@ -13,15 +13,19 @@
         </div>
     </div>
 
-    <div id="sortableElem">
+    <div>
         @if(!empty($requests))
-            @foreach($requests as $request)
-                @if($request->type == 'folder')
-                    <livewire:folder-component :folder="$request" :colours="$colours"/>
-                @else
-                    <livewire:request-component :request="$request" :colours="$colours"/>
-                @endif
-            @endforeach
+            <div class="grid">
+                @foreach($requests as $request)
+                    <div class="item">
+                        @if($request->type == 'folder')
+                            <livewire:folder-component :folder="$request" :colours="$colours"/>
+                        @else
+                            <livewire:request-component :request="$request" :colours="$colours"/>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
         @endif
     </div>
 </div>

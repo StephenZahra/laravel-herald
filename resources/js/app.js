@@ -1,4 +1,4 @@
 import './bootstrap';
-import Sortable from 'sortablejs';
+import Muuri from 'muuri';
 
-window.sortable = Sortable;
+window.Muuri = Muuri;
