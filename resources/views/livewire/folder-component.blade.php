@@ -1,11 +1,11 @@
-<div wire:key="{{$folder->id}}" data-id="{{$folder->id}}" class="folder request-item folder-container item-content">
+<div data-id="{{$folder['id']}}" class="folder request-item folder-container item-content">
     <div class="folder-toggle">
         <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
             <span style="color: #ffffff; font-family: math;">
-                {{$folder->name}}
+                {{$folder['name']}}
             </span>
 
-            <div class="dropdown is-right mr-1 dropdown-options" dropdown-id="{{$folder->id}}">
+            <div class="dropdown is-right mr-1 dropdown-options" dropdown-id="{{$folder['id']}}">
                 <div class="dropdown-trigger">
                     <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu2">
                         <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
@@ -20,13 +20,13 @@
         </span>
     </div>
     @if(optional($folder)->requests)
-        <div class="nested-items is-hidden" parent-id="{{$folder->id}}">
+        <div class="nested-items is-hidden" parent-id="{{$folder['id']}}">
             @foreach($folder->requests as $request)
-                <div class="item">
+                <div class="item" data-id="{{$request['id']}}">
                     @if($request->type == 'folder')
-                        <livewire:folder-component :parent="$folder" :folder="$request" :colours="$colours"/>
+                        <livewire:folder-component :key="$request['id']" :parent="$folder" :folder="$request" :colours="$colours"/>
                     @else
-                        <livewire:request-component :parent="$folder" :request="$request" :colours="$colours"/>
+                        <livewire:request-component :key="$request['id']" :parent="$folder" :request="$request" :colours="$colours"/>
                     @endif
                 </div>
             @endforeach

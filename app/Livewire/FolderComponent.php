@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class FolderComponent extends Component
 {
-    public object $folder;
+    public array $folder;
     public array $colours;
 
     public function render()

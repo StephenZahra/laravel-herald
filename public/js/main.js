@@ -1,6 +1,8 @@
 let ddBtnNew = document.getElementById("dropdown-btn-new");
 let newItems = document.getElementById("new-items");
 
+var grid = null;
+
 // this handles visibility of the "New" dropdown button at the top of the request list panel
 ddBtnNew.addEventListener("click", function (event){
     if(!ddBtnNew.classList.contains("is-active")){
@@ -61,8 +63,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// this recreates the current muuri instance in order to make a new one with a new item
+function reloadListItems(grid){
+    grid.destroy();
+
+    this.grid = new window.Muuri('.grid', {
+        items: '*',
+        dragEnabled: true,
+    });
+}
+
+// this handles the updating of the request list structure when dragging items around
 document.addEventListener('DOMContentLoaded', function(){
-    let grid = new window.Muuri('.grid', {
-        dragEnabled: true
+    grid = new window.Muuri('.grid', {
+        dragEnabled: true,
+    });
+
+    window.Livewire.on('updateItems', (items) => {
+        if(grid){
+            setTimeout(() => reloadListItems(grid), 1);
+        }
+    });
+
+    grid.on('dragReleaseEnd', function(data){
+        const newOrder = grid.getItems().map(item => item.getElement().dataset.id);
+        window.Livewire.dispatch('update-order', newOrder);
     });
 })

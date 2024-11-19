@@ -17,13 +17,13 @@
         @if(!empty($requests))
             <div class="grid">
                 @foreach($requests as $request)
-                    <div class="item">
-                        @if($request->type == 'folder')
-                            <livewire:folder-component :folder="$request" :colours="$colours"/>
+                    <div class="item" data-id="{{$request['id']}}">
+                        @if(!array_key_exists('type', $request))
+                            <livewire:folder-component :key="$request['id']" :folder="$request" :colours="$colours"/>
                         @else
-                            <livewire:request-component :request="$request" :colours="$colours"/>
+                            <livewire:request-component :key="$request['id']" :request="$request" :colours="$colours"/>
                         @endif
-                    </div>
+                   </div>
                 @endforeach
             </div>
         @endif
