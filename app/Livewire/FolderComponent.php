@@ -11,6 +11,6 @@ class FolderComponent extends Component
 
     public function render()
     {
-        return view('livewire.folder-component');
+        //return view('livewire.folder-component');
     }
 }

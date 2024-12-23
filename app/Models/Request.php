@@ -15,7 +15,8 @@ class Request extends Model
         'name',
         'unique_name',
         'type',
-        'url'
+        'url',
+        'position'
     ];
 
     /**
@@ -27,6 +28,7 @@ class Request extends Model
         'name' => 'new request',
         'unique_name' => 'request_xxx',
         'type' => 'GET',
-        'url' => ''
+        'url' => '',
+        'position' => 0
     ];
 }

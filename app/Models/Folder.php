@@ -14,6 +14,7 @@ class Folder extends Model
     protected $fillable = [
         'name',
         'unique_name',
+        'position'
     ];
 
     /**
@@ -24,5 +25,6 @@ class Folder extends Model
     protected $attributes = [
         'name' => 'new folder',
         'unique_name' => 'folder_xxx',
+        'position' => 0
     ];
 }

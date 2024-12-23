@@ -19,9 +19,9 @@
                 @foreach($requests as $request)
                     <div class="item" data-id="{{$request['id']}}">
                         @if(!array_key_exists('type', $request))
-                            <livewire:folder-component :key="$request['id']" :folder="$request" :colours="$colours"/>
+                            @include('blade.folder-component', ['folder' => $request, 'colours' => $colours])
                         @else
-                            <livewire:request-component :key="$request['id']" :request="$request" :colours="$colours"/>
+                            @include('blade.request-component', ['request' => $request, 'colours' => $colours])
                         @endif
                    </div>
                 @endforeach

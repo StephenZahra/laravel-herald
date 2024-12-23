@@ -41,14 +41,17 @@ class RequestListComponent extends Component
     {
         $item = null;
         if($type == "folder"){
-            $item = Folder::create(['name' => "new folder", 'unique_name' => uniqid('folder_')]);
+            $item = Folder::create(['name' => "new folder", 'unique_name' => uniqid('folder_'), 'position' => Folder::count()+1]);
         }
         else{
-            $item = Request::create(['name' => 'new request', 'unique_name' => uniqid('request_'), 'type' => 'GET', 'url' => '']);
+            $item = Request::create(['name' => 'new request', 'unique_name' => uniqid('request_'), 'type' => 'GET', 'url' => '',
+            'position' => Folder::count()+1]);
         }
 
         $this->requests[] = $this->dbService->getByUniqueName($item);
         $this->dispatch('updateItems', $this->requests);
+
+        return view('livewire.request-list-component', ['requests' => $this->requests]);
     }
 
     #[On('update-order')]

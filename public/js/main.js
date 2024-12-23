@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     grid.on('dragReleaseEnd', function(data){
         const newOrder = grid.getItems().map(item => item.getElement().dataset.id);
+        console.log(newOrder);
         window.Livewire.dispatch('update-order', newOrder);
     });
 })

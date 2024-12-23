@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('type');
             $table->string('url', 2048)->nullable();
 
+            //Integers
+            $table->unsignedBigInteger('position');
+
             //Temporal
             $table->timestamps();
 

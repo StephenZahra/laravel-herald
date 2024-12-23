@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('unique_name');
 
+            //Integers
+            $table->unsignedBigInteger('position');
+
             //Temporal
             $table->timestamps();
         });

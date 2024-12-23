@@ -23,10 +23,10 @@
         <div class="nested-items is-hidden" parent-id="{{$folder['id']}}">
             @foreach($folder->requests as $request)
                 <div class="item" data-id="{{$request['id']}}">
-                    @if($request->type == 'folder')
-                        <livewire:folder-component :key="$request['id']" :parent="$folder" :folder="$request" :colours="$colours"/>
+                    @if(array_key_exists('type', $request))
+                        @include('blade.request-component', ['parent' => $folder, 'request' => $request, 'colours' => $colours])
                     @else
-                        <livewire:request-component :key="$request['id']" :parent="$folder" :request="$request" :colours="$colours"/>
+                        @include('blade.folder-component', ['parent' => $folder, 'folder' => $request, 'colours' => $colours])
                     @endif
                 </div>
             @endforeach

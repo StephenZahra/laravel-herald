@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class RequestComponent extends Component
 {
-    public object $request;
+    public array $request;
     public array $colours;
     public string $classes;
 

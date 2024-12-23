@@ -1,7 +1,7 @@
 <div data-id="{{$request['id']}}" class="request request-item request-container item-content">
     <div class="request-toggle">
         <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
-            <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request->type]}}">{{$request['type']}}</strong></span>
+            <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request['type']]}}">{{$request['type']}}</strong></span>
 
             <span style="display: flex; justify-content: space-between; flex-grow: 1; align-items: center;">
                 <span style="color: #ffffff; font-family: math;">{{$request['name']}}</span>
