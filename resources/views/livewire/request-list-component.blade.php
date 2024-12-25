@@ -17,7 +17,7 @@
         @if(!empty($requests))
             <div class="grid">
                 @foreach($requests as $request)
-                    <div class="item" data-id="{{$request['id']}}">
+                    <div class="item" data-id="{{$request['unique_name']}}">
                         @if(!array_key_exists('type', $request))
                             @include('blade.folder-component', ['folder' => $request, 'colours' => $colours])
                         @else

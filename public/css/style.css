@@ -33,7 +33,7 @@ body {
     background-color: rgba(240, 240, 240, 0.2);
 }
 
-/* General hover effect for the .request folder (parent)*/
+/* General hover effect for the .request folder (parent) */
 .request-item:hover {
     background-color: rgba(240, 240, 240, 0.2); /* Only applies to folder */
 }
@@ -105,7 +105,7 @@ body {
     display: none;
 }
 
-/* make the dropdown appear for folder and request elements using the div with toggle class*/
+/* make the dropdown appear for folder and request elements using the div with toggle class */
 .folder-toggle:hover .dropdown,
 .request-toggle:hover .dropdown {
     display: block;
@@ -120,7 +120,7 @@ body {
     background-color: rgba(120, 120, 120, 0.4); /* Stay highlighted */
 }
 
-/* Muuri Styling*/
+/* Muuri Styling */
 .grid {
     position: relative;
 }

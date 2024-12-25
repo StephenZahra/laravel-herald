@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// this recreates the current muuri instance in order to make a new one with a new item
+// this function recreates the current muuri instance in order to make a new one when adding items
 function reloadListItems(grid){
     grid.destroy();
 
@@ -71,22 +71,28 @@ function reloadListItems(grid){
         items: '*',
         dragEnabled: true,
     });
+
+    // reattach event listener as we destroyed the previous instance
+    this.grid.on('dragReleaseEnd', function (data) {
+        console.log(data.getGrid().getItems().map(item => item.getElement().dataset.id));
+    });
 }
 
 // this handles the updating of the request list structure when dragging items around
 document.addEventListener('DOMContentLoaded', function(){
-    grid = new window.Muuri('.grid', {
-        dragEnabled: true,
+    this.grid = new window.Muuri('.grid', {
+        items: '*',
+        dragEnabled: true
     });
 
     window.Livewire.on('updateItems', (items) => {
-        if(grid){
-            setTimeout(() => reloadListItems(grid), 1);
+        if(this.grid){
+            setTimeout(() => reloadListItems(this.grid), 1);
         }
     });
 
-    grid.on('dragReleaseEnd', function(data){
-        const newOrder = grid.getItems().map(item => item.getElement().dataset.id);
+    this.grid.on('dragReleaseEnd', function(data){
+        const newOrder = data.getGrid().getItems().map(item => item.getElement().dataset.id);
         console.log(newOrder);
         window.Livewire.dispatch('update-order', newOrder);
     });

@@ -1,4 +1,4 @@
-<div data-id="{{$request['id']}}" class="request request-item request-container item-content">
+<div data-id="{{$request['unique_name']}}" class="request request-item request-container item-content">
     <div class="request-toggle">
         <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
             <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request['type']]}}">{{$request['type']}}</strong></span>
@@ -6,7 +6,7 @@
             <span style="display: flex; justify-content: space-between; flex-grow: 1; align-items: center;">
                 <span style="color: #ffffff; font-family: math;">{{$request['name']}}</span>
 
-                <div class="dropdown is-right mr-1 dropdown-options" dropdown-id="{{$request['id']}}">
+                <div class="dropdown is-right mr-1 dropdown-options" dropdown-id="{{$request['unique_name']}}">
                     <div class="dropdown-trigger">
                         <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu4">
                             <span class="icon"><i class="fas fa-gear gear-ico"></i></span>
