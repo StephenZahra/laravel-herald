@@ -24,8 +24,10 @@ document.addEventListener('click', function(event) {
     let dropdownElem = event.target.closest('.dropdown-options');
 
     if (dropdownId && dropdownElem) {
-       // Toggle visibility of the dropdown (folder)
-       dropdownElem.classList.toggle("is-active");
+        // Toggle visibility of the dropdown (folder)
+        dropdownElem.classList.toggle("is-active");
+        let muuriRootItem = getMuuriRootElement(event.target.parentElement);
+        muuriRootItem.style.zIndex = "999";
     }
 
     event.stopPropagation();
@@ -97,3 +99,15 @@ document.addEventListener('DOMContentLoaded', function(){
         window.Livewire.dispatch('update-order', newOrder);
     });
 })
+
+/**
+ * This function recuresively calls itself to get the root muuri element as the dropdown menu is somehow being hidden behind
+ * the other request elements. Used when clicking on the gear icon.
+ */
+function getMuuriRootElement(htmlElement){
+    if(!htmlElement.parentElement.classList.contains("muuri-item")){
+        return getMuuriRootElement(htmlElement.parentElement);
+    }
+
+    return htmlElement.parentElement;
+}
