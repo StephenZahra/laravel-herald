@@ -1,8 +1,6 @@
 let ddBtnNew = document.getElementById("dropdown-btn-new");
 let newItems = document.getElementById("new-items");
 
-var grid = null;
-
 // this handles visibility of the "New" dropdown button at the top of the request list panel
 ddBtnNew.addEventListener("click", function (event){
     if(!ddBtnNew.classList.contains("is-active")){
@@ -26,8 +24,6 @@ document.addEventListener('click', function(event) {
     if (dropdownId && dropdownElem) {
         // Toggle visibility of the dropdown (folder)
         dropdownElem.classList.toggle("is-active");
-        let muuriRootItem = getMuuriRootElement(event.target.parentElement);
-        muuriRootItem.style.zIndex = "999";
     }
 
     event.stopPropagation();
@@ -65,49 +61,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// this function recreates the current muuri instance in order to make a new one when adding items
-function reloadListItems(grid){
-    grid.destroy();
-
-    this.grid = new window.Muuri('.grid', {
-        items: '*',
-        dragEnabled: true,
-    });
-
-    // reattach event listener as we destroyed the previous instance
-    this.grid.on('dragReleaseEnd', function (data) {
-        console.log(data.getGrid().getItems().map(item => item.getElement().dataset.id));
-    });
-}
-
-// this handles the updating of the request list structure when dragging items around
+// this creates the Sortable instances so the items can be dragged around
 document.addEventListener('DOMContentLoaded', function(){
-    this.grid = new window.Muuri('.grid', {
-        items: '*',
-        dragEnabled: true
-    });
+    const sortableContainer = document.getElementById('sortable-container');
+    const Sortable = window.sortable;
 
-    window.Livewire.on('updateItems', (items) => {
-        if(this.grid){
-            setTimeout(() => reloadListItems(this.grid), 1);
+    const sortable = new Sortable(sortableContainer, {
+        draggable: '.sortable-itm',
+        group: 'shared',
+        animation: 150,
+        onEnd: (event) => {
+            const orderedIds = Array.from(sortableContainer.children).map(item => item.dataset.id);
+            console.log('New order:', orderedIds);
+
+            window.Livewire.dispatch('update-order', orderedIds);
         }
     });
 
-    this.grid.on('dragReleaseEnd', function(data){
-        const newOrder = data.getGrid().getItems().map(item => item.getElement().dataset.id);
-        console.log(newOrder);
-        window.Livewire.dispatch('update-order', newOrder);
+    document.querySelectorAll('.folder-container').forEach(folder => {
+        const nestingSortable = new Sortable(folder, {
+            draggable: '.sortable-itm',
+            group: 'shared',
+            animation: 150,
+            nested: true
+        });
+    });
+
+    window.Livewire.on('updateItems', (items) => {
+        // TODO: reload Sortable instances when creating new items as newly created folders will not be able to nest items in them
     });
 })
-
-/**
- * This function recuresively calls itself to get the root muuri element as the dropdown menu is somehow being hidden behind
- * the other request elements. Used when clicking on the gear icon.
- */
-function getMuuriRootElement(htmlElement){
-    if(!htmlElement.parentElement.classList.contains("muuri-item")){
-        return getMuuriRootElement(htmlElement.parentElement);
-    }
-
-    return htmlElement.parentElement;
-}

@@ -1,4 +1,4 @@
-<div data-id="{{$request['unique_name']}}" class="request request-item request-container item-content">
+<div class="request request-item request-container item-content sortable-item" data-id="{{$request['unique_name']}}">
     <div class="request-toggle">
         <span class="icon-text" style="width: inherit; display: flex; align-items: center;">
             <span style="font-size: 12px; font-family: system-ui;"><strong class="{{$colours[$request['type']]}}">{{$request['type']}}</strong></span>

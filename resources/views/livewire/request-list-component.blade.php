@@ -1,4 +1,4 @@
-<div>
+<div style="height: inherit;">
     <div id="dropdown-btn-new" class="dropdown mt-1 ml-1" style="display: block !important; width: fit-content;">
         <div class="dropdown-trigger">
             <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu1">
@@ -13,11 +13,11 @@
         </div>
     </div>
 
-    <div>
+    <div id="items" style="height: 100%;">
         @if(!empty($requests))
-            <div class="grid">
+            <div id="sortable-container" style="height: inherit;">
                 @foreach($requests as $request)
-                    <div class="item" data-id="{{$request['unique_name']}}">
+                    <div class="sortable-itm pt-1" data-id="{{$request['unique_name']}}">
                         @if(!array_key_exists('type', $request))
                             @include('blade.folder-component', ['folder' => $request, 'colours' => $colours])
                         @else

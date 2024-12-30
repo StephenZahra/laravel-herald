@@ -12,6 +12,6 @@
     },
     "dependencies": {
         "build": "^0.1.4",
-        "muuri": "^0.9.5"
+        "sortablejs": "^1.15.6"
     }
 }

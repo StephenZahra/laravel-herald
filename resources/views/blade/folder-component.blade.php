@@ -1,4 +1,4 @@
-<div data-id="{{$folder['unique_name']}}" class="folder request-item folder-container item-content">
+<div data-id="{{$folder['unique_name']}}" class="folder request-item folder-container item-content sortable-item">
     <div class="folder-toggle">
         <span class="icon-text" style="width: inherit; display: flex; justify-content: space-between; align-items: center;">
             <span style="color: #ffffff; font-family: math;">
@@ -22,7 +22,7 @@
     @if(optional($folder)->requests)
         <div class="nested-items is-hidden" parent-id="{{$folder['unique_name']}}">
             @foreach($folder->requests as $request)
-                <div class="item" data-id="{{$request['unique-name']}}">
+                <div class="sortable-list" data-id="{{$request['unique-name']}}">
                     @if(array_key_exists('type', $request))
                         @include('blade.request-component', ['parent' => $folder, 'request' => $request, 'colours' => $colours])
                     @else
